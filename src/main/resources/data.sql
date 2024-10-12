@@ -33,5 +33,5 @@ CREATE TABLE IF NOT EXISTS users (
 
 INSERT INTO users (id, username, password, full_name, city, street, zip, phone_number)
 VALUES
-    (1, 'sa', '$2a$12$U45TiH5COTD4jYIfL1i8E.uJoXG5ZL8.6J2gXjUOG8W5gJXlgC1Ja', 'Test User', 'Test City', 'Test Street', '12345', '123456789');
+    (0, 'sa', '$2a$12$U45TiH5COTD4jYIfL1i8E.uJoXG5ZL8.6J2gXjUOG8W5gJXlgC1Ja', 'Test User', 'Test City', 'Test Street', '12345', '123456789');
 
