@@ -11,7 +11,8 @@
 <img th:src="@{/logo.png}"/>
 
 <br/>
-
+<p>Masz już konto? Kliknij
+    <a th:href="@{/login}">tutaj</a>, aby się zalogować.</p>
 
 <form method="POST" th:action="@{/register}" id="registerForm">
     <label for="username">Nazwa użytkownika: </label>

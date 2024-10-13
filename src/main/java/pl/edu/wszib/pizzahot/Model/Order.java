@@ -8,6 +8,7 @@ import lombok.*;
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Length;
+import pl.edu.wszib.pizzahot.Security.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,6 +20,10 @@ import java.util.Optional;
 @Data
 @Entity
 @Table(name= "Pizza_Order")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Order implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,6 +57,9 @@ public class Order implements Serializable {
 
     @ManyToMany(targetEntity = Pizza.class)
     private List<Pizza> pizzas = new ArrayList<>();
+
+    @ManyToOne
+    private User user;
 
     public void addDesign(Pizza design){
         pizzas.add(design);

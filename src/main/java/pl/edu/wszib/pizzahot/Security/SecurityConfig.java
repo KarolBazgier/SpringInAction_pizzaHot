@@ -34,13 +34,16 @@ public class SecurityConfig {
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/register").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
+                        .requestMatchers("/design").hasRole("USER")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .permitAll()
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/design", true)
                 )
                 .logout(logout -> logout
-                        .permitAll()
+                        .logoutSuccessUrl("/")
                 )
                 .csrf(csrf -> csrf
                         .ignoringRequestMatchers("/h2-console/**")

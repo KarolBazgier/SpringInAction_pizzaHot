@@ -5,6 +5,12 @@
 </head>
 
 <body>
+<form method="GET" th:action="@{/login}">
+    <input type="submit" value="ZALOGUJ SIĘ" />
+</form>
+<form method="POST" th:action="@{/logout}">
+    <input type="submit" value="WYLOGUJ SIĘ" />
+</form>
     <h1>Witaj w Pizza HOT</h1>
     <img th:src="@{/logo.png}"/>
 </body>

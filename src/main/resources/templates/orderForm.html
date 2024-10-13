@@ -7,6 +7,10 @@
 </head>
 <body>
 
+<form method="POST" th:action="@{/logout}">
+    <input type="submit" value="WYLOGUJ SIĘ" />
+</form>
+
     <h1>Zamów swoją PIZZE</h1>
     <img th:src="@{/logo.png}"/>
     <a th:href="@{/design}" id="another">Przygotuj inną PIZZE</a>
