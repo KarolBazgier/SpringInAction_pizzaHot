@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista zamówień</title>
+</head>
+<body>
+<h1>Twoje zamówienia</h1>
+
+<!-- Sprawdza, czy są jakieś zamówienia -->
+<div th:if="${#lists.isEmpty(orders)}">
+    <p>Nie masz żadnych zamówień.</p>
+</div>
+
+<!-- Wyświetla zamówienia, jeśli są dostępne -->
+<table th:if="${!#lists.isEmpty(orders)}">
+    <thead>
+    <tr>
+        <th>Numer zamówienia</th>
+        <th>Data zamówienia</th>
+        <th>Nazwa Pizzy</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.id}">ID zamówienia</td>
+        <td th:text="${#dates.format(order.placedAt, 'yyyy-MM-dd HH:mm')}">Data zamówienia</td>
+        <td>
+            <ul>
+                <!-- Iteruje przez pizzę w zamówieniu -->
+                <li th:each="pizza : ${order.pizzas}" th:text="${pizza.name}">Nazwa pizzy</li>
+            </ul>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<a th:href="@{/design}">Zamów nową pizzę</a>
+</body>
+</html>

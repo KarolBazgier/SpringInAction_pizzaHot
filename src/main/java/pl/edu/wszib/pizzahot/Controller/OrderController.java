@@ -2,8 +2,13 @@ package pl.edu.wszib.pizzahot.Controller;
 
 import jakarta.websocket.Session;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +23,7 @@ import pl.edu.wszib.pizzahot.Repository.UserRepository;
 import pl.edu.wszib.pizzahot.Security.User;
 
 import javax.validation.Valid;
+
 import java.security.Principal;
 
 
@@ -25,8 +31,10 @@ import java.security.Principal;
 @Controller
 @RequestMapping("/orders")
 @SessionAttributes("order")
+@ConfigurationProperties(prefix= "pizza.orders")
 public class OrderController {
-
+    @Setter
+    private int pageSize = 20;
     private final OrderRepository orderRepo;
     private final PizzaRepository pizzaRepo;
     private final UserRepository userRepo;
@@ -76,5 +84,13 @@ public class OrderController {
         session.setComplete();
         log.info("Zamówienie zostało złożone : " + order);
         return "redirect:/";
+    }
+
+    @GetMapping
+    public String ordersForUser(@AuthenticationPrincipal User user, Model model){
+        Pageable pageable = (Pageable) PageRequest.of(0, pageSize);
+        model.addAttribute("orders", orderRepo.findByUserOrderByPlacedAtDesc(user, pageable));
+
+        return "orderList";
     }
 }

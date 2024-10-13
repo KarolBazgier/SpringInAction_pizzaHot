@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.server.EntityLinks;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,14 +27,16 @@ import javax.validation.Valid;
 
 @Slf4j
 @Controller
-@RequestMapping("/design")
+@RequestMapping(value = "/design", produces = "application/json")
 @SessionAttributes("order")
-
+@CrossOrigin(origins = "*")
 public class DesignPizzaController {
 
     private final IngredientRepository ingredientRepo;
 
     private final PizzaRepository pizzaRepo;
+
+
 
     @Autowired
     public DesignPizzaController(IngredientRepository ingredientRepository, PizzaRepository pizzaRepo) {
