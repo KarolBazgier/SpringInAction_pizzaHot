@@ -1,1 +1,34 @@
-<p>recent-pizzas works!</p>
+
+
+<p>Even the greatest pizza chefs sometimes need inspiration. 
+   Here are some of the most recently created pizzas, designed by pizza enthusiasts like you...</p>
+
+<div class="recentsblock">
+  <!-- Wyświetlanie każdej pizzy z listy recentPizzas -->
+  <div class="pizzablock" *ngFor="let pizza of recentPizzas">
+      <div class="pizzaName">
+        <span class="small">Pizza:</span><br/> "{{pizza.name}}"
+      </div>
+
+      <!-- Wyświetlanie składników pizzy -->
+      <div class="pizzaDesc">
+        <ul class="commalist">
+          <li *ngFor="let ingredient of pizza.ingredients">{{ingredient.name}}</li>
+        </ul>
+
+        <!-- Wyświetlanie rodzaju ciasta, jeśli jest dostępne -->
+        <div *ngIf="pizza.dough">
+          <span>Dough type:</span>
+          <ul class="commalist">
+            <li>{{pizza.dough}}</li>
+          </ul>
+        </div>
+
+        <!-- Jeśli rodzaj ciasta nie jest dostępny, pokazuje 'Unknown dough type' -->
+        <div *ngIf="!pizza.dough">Dough type: Unknown</div>
+      </div>
+
+      <!-- Przycisk do zamówienia pizzy -->
+      <button label="Order this pizza"></button>
+  </div>
+</div>

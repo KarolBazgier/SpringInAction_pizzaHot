@@ -29,12 +29,22 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .csrf(csrf -> csrf
+                        .ignoringRequestMatchers("/h2-console/**")
+                        .ignoringRequestMatchers("/rest/design/**")
+                        .ignoringRequestMatchers("/rest/deign/recent/**")
+                        .ignoringRequestMatchers("/rest/order/**")
+
+                )
                 .headers(headers -> headers.frameOptions().sameOrigin())
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/register").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
-                        .requestMatchers("/design").hasRole("USER")
+                        .requestMatchers("/design").permitAll()
+                        .requestMatchers("/rest/design/recent/**").permitAll()
+                        .requestMatchers("/rest/design/**").permitAll()
+                        .requestMatchers("/rest/order/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -45,9 +55,7 @@ public class SecurityConfig {
                 .logout(logout -> logout
                         .logoutSuccessUrl("/")
                 )
-                .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/h2-console/**")
-                );
+               ;
 
         return http.build();
     }

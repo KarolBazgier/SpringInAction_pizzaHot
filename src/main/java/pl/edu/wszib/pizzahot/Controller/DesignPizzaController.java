@@ -27,9 +27,9 @@ import javax.validation.Valid;
 
 @Slf4j
 @Controller
-@RequestMapping(value = "/design", produces = "application/json")
+@RequestMapping(value = "/design")
 @SessionAttributes("order")
-@CrossOrigin(origins = "*")
+
 public class DesignPizzaController {
 
     private final IngredientRepository ingredientRepo;

@@ -5,6 +5,7 @@
 </head>
 
 <body>
+<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 <form method="GET" th:action="@{/login}">
     <input type="submit" value="ZALOGUJ SIĘ" />
 </form>

@@ -1,0 +1,162 @@
+### cookies dla testu zalogowanego uzytkownika
+#@JSESSIONID=286AB9F86686791BFC393B5EB1B4C36E
+#@AUTHORIZATION=Basic dXNlcjpzYQ==
+### wywolanie GET - formularz do robienia pizzy
+GET http://localhost:8080/design
+#Authorization: {{AUTHORIZATION}}
+
+> {%
+    client.test("Oczekiwany status 200", function() {
+        client.assert(response.status === 200, "Oczekiwano statusu 200, ale otrzymano " + response.status);
+    });
+%}
+
+
+### POST rest - new pizza
+POST http://localhost:8080/rest/design
+#Authorization: {{AUTHORIZATION}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Margarita",
+  "dough": "GRB",
+  "vegetables": [
+
+  ],
+  "meat": [
+
+  ],
+  "sauce": [
+
+  ]
+}
+> {%
+    client.test("Oczekiwany status 201", function() {
+        client.assert(response.status === 201, "Oczekiwano statusu 201, ale otrzymano " + response.status);
+    });
+%}
+
+### GET rest - recent pizzas
+GET http://localhost:8080/rest/design/1
+Accept: application/json
+#Authorization: {{AUTHORIZATION}}
+
+> {%
+    client.test("Oczekiwany status 200", function() {
+        client.assert(response.status === 200, "Oczekiwano statusu 200, ale otrzymano " + response.status);
+    });
+    client.test("Oczekiwany ID 1", function() {
+        client.assert(response.body.id === 1, "Oczekiwano ID 1, ale otrzymano " + response.body.id);
+    });
+%}
+
+### GET - all ingredients
+GET http://localhost:8080/rest/design
+Accept: application/json
+
+> {%
+    client.test("Oczekiwany status 200", function() {
+        client.assert(response.status === 200, "Oczekiwano statusu 200, ale otrzymano " + response.status);
+    });
+%}
+
+### rest Order - new Order
+POST http://localhost:8080/rest/order
+Content-Type: application/json
+
+{
+  "name": "Jan Kowalski",
+  "street": "Miodowa 1",
+  "city": "Warszawa",
+  "zip": "00-123",
+  "cardNumber": "4111111111111111",
+  "cardExpiration": "12/23",
+  "cardCVV": "123",
+  "pizzas": [
+    {"id": 1}
+  ]
+}
+
+> {%
+    client.test("Oczekiwany status 201", function() {
+        client.assert(response.status === 201, "Oczekiwano statusu 201, ale otrzymano " + response.status);
+    });
+%}
+
+### rest Order - all Orders
+GET http://localhost:8080/rest/order
+
+> {%
+    client.test("Oczekiwany status 200", function() {
+        client.assert(response.status === 200, "Oczekiwano statusu 200, ale otrzymano " + response.status);
+    });
+
+%}
+
+### rest Order - put Order
+PUT http://localhost:8080/rest/order/1
+Content-Type: application/json
+
+{
+  "name": "Anna",
+  "street": "Nowa 10",
+  "city": "Warszawa",
+  "zip": "00-123",
+  "cardNumber": "4111111111111111",
+  "cardExpiration": "12/23",
+  "cardCVV": "123",
+  "pizzas": [
+    {"id": 1}
+  ]
+}
+
+> {%
+    client.test("Oczekiwany status 200", function() {
+        client.assert(response.status === 200, "Oczekiwano statusu 200, ale otrzymano " + response.status);
+    });
+    client.test("Oczekiwany ID 1", function() {
+        client.assert(response.body.id === 1, "Oczekiwano ID 1, ale otrzymano " + response.body.id);
+    });
+    client.test("Oczekiwany name Anna", function() {
+        client.assert(response.body.name === "Anna", "Oczekiwano name Anna, ale otrzymano " + response.body.name);
+    });
+    client.test("Oczekiwany street Nowa 10", function() {
+        client.assert(response.body.street === "Nowa 10", "Oczekiwano street Nowa 10, ale otrzymano " + response.body.id);
+    });
+%}
+
+
+### rest Order - patch Order
+PATCH http://localhost:8080/rest/order/1
+Content-Type: application/json
+
+{
+   "city": "Kraków",
+   "cardCVV": "321"
+}
+
+> {%
+    client.test("Oczekiwany status 200", function() {
+        client.assert(response.status === 200, "Oczekiwano statusu 200, ale otrzymano " + response.status);
+    });
+    client.test("Oczekiwany ID 1", function() {
+        client.assert(response.body.id === 1, "Oczekiwano ID 1, ale otrzymano " + response.body.id);
+    });
+    client.test("Oczekiwany city Kraków", function() {
+        client.assert(response.body.city === "Kraków", "Oczekiwano city Kraków, ale otrzymano " + response.body.city);
+    });
+    client.test("Oczekiwany cardCVV = 321 ", function() {
+        client.assert(response.body.cardCVV === "321", "Oczekiwano cardCVV = 321, ale otrzymano " + response.body.cardCVV);
+    });
+%}
+
+### rest Order - delete Order
+DELETE http://localhost:8080/rest/order/1
+
+> {%
+    client.test("Oczekiwany status 204", function() {
+        client.assert(response.status === 204, "Oczekiwano statusu 204, ale otrzymano " + response.status);
+    });
+
+%}

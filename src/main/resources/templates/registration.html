@@ -6,7 +6,7 @@
     <title>Aplikacja Pizza Hot</title>
 </head>
 <body>
-
+<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 <h1>Rejestracja</h1>
 <img th:src="@{/logo.png}"/>
 
