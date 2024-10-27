@@ -1,10 +1,16 @@
 package pl.edu.wszib.pizzahot.Controller;
 
+import io.opentelemetry.sdk.resources.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+
+
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.EntityLinks;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +19,9 @@ import pl.edu.wszib.pizzahot.Model.Pizza;
 import pl.edu.wszib.pizzahot.Repository.IngredientRepository;
 import pl.edu.wszib.pizzahot.Repository.PizzaRepository;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
@@ -37,11 +45,24 @@ public class DesignPizzaRestController {
         return ingredientRepo.findAll();
     }
     @GetMapping("/recent")
-    public Iterable<Pizza> recentPizzas(){
+    public CollectionModel<EntityModel<Pizza>> recentPizzas(){
         PageRequest pageRequest = PageRequest.of(0,12,
                                         Sort.by("createdAt").descending());
 
-        return pizzaRepo.findAll(pageRequest).getContent();
+        List<Pizza> pizzas = pizzaRepo.findAll(pageRequest).getContent();
+
+        List<EntityModel<Pizza>> pizzasResources = pizzas.stream()
+                .map(pizza -> EntityModel.of(pizza,
+                        WebMvcLinkBuilder.linkTo(
+                                WebMvcLinkBuilder.methodOn(DesignPizzaRestController.class).pizzaById(pizza.getId())
+                        ).withSelfRel()
+                        ))
+                .collect(Collectors.toList());
+
+        return CollectionModel.of(pizzasResources,
+                WebMvcLinkBuilder.linkTo(
+                        WebMvcLinkBuilder.methodOn(DesignPizzaRestController.class).recentPizzas()
+                ).withSelfRel());
     }
 
     @GetMapping("/{id}")

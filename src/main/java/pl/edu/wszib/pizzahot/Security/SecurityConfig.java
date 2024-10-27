@@ -44,7 +44,9 @@ public class SecurityConfig {
                         .requestMatchers("/design").permitAll()
                         .requestMatchers("/rest/design/recent/**").permitAll()
                         .requestMatchers("/rest/design/**").permitAll()
+                        .requestMatchers("/rest/design").permitAll()
                         .requestMatchers("/rest/order/**").permitAll()
+                        .requestMatchers("/ingredients").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

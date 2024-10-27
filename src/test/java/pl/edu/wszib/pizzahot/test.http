@@ -25,7 +25,9 @@ Accept: application/json
 
   ],
   "meat": [
-
+    {"id" : "SAL",
+    "name" : "Salami",
+    "type" : "MEAT"}
   ],
   "sauce": [
 
@@ -50,6 +52,10 @@ Accept: application/json
         client.assert(response.body.id === 1, "Oczekiwano ID 1, ale otrzymano " + response.body.id);
     });
 %}
+
+### GET rest - recent pizzas
+GET http://localhost:8080/rest/design/recent
+Accept: application/json
 
 ### GET - all ingredients
 GET http://localhost:8080/rest/design
