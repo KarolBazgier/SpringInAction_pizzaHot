@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Aplikacja Pizza HOT</title>
+</head>
+
+<body>
+<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+<form method="GET" th:action="@{/login}">
+    <input type="submit" value="ZALOGUJ SIĘ" />
+</form>
+<form method="POST" th:action="@{/logout}">
+    <input type="submit" value="WYLOGUJ SIĘ" />
+</form>
+    <h1>Witaj w Pizza HOT</h1>
+    <img th:src="@{/logo.png}"/>
+</body>
+
+</html>

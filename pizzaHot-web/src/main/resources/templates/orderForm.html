@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplikacja Pizza Hot</title>
+</head>
+<body>
+
+<form method="POST" th:action="@{/logout}">
+    <input type="submit" value="WYLOGUJ SIĘ" />
+</form>
+
+    <h1>Zamów swoją PIZZE</h1>
+    <img th:src="@{/logo.png}"/>
+    <a th:href="@{/design}" id="another">Przygotuj inną PIZZE</a>
+    <br/>
+
+
+    <form method="POST" th:action="@{/orders}" th:object="${order}">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <div th:if="${#fields.hasErrors()}">
+        <span class="validationError">
+            Usuń wymienione błędy i spróbuj ponownie.
+        </span>
+        </div>
+
+        <label for="name"> Imię i nazwisko: </label>
+        <input type="text" th:field="*{name}" />
+        <span class="validationError" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+            Błąd: <span th:text="${#fields.errors('name')}"></span>
+        </span>
+        <br/>
+
+        <label for="street"> Ulica: </label>
+        <input type="text" th:field="*{street}" />
+        <span class="validationError" th:if="${#fields.hasErrors('street')}" th:errors="*{street}">
+            Błąd: <span th:text="${#fields.errors('street')}"></span>
+        </span>
+        <br/>
+
+        <label for="city"> Miasto: </label>
+        <input type="text" th:field="*{city}" />
+        <span class="validationError" th:if="${#fields.hasErrors('city')}" th:errors="*{city}">
+            Błąd: <span th:text="${#fields.errors('city')}"></span>
+        </span>
+        <br/>
+
+        <label for="zip"> Kod pocztowy: </label>
+        <input type="text" th:field="*{zip}" />
+        <span class="validationError" th:if="${#fields.hasErrors('zip')}" th:errors="*{zip}">
+            Błąd: <span th:text="${#fields.errors('zip')}"></span>
+        </span>
+        <br/>
+
+        <label for="cardNumber"> Nr karty: </label>
+        <input type="text" th:field="*{cardNumber}" />
+        <span class="validationError" th:if="${#fields.hasErrors('cardNumber')}" th:errors="*{cardNumber}">
+            Błąd: <span th:text="${#fields.errors('cardNumber')}"></span>
+        </span>
+        <br/>
+
+        <label for="cardExpiration"> Data ważności (MM/RR): </label>
+        <input type="text" th:field="*{cardExpiration}" />
+        <span class="validationError" th:if="${#fields.hasErrors('cardExpiration')}" th:errors="*{cardExpiration}">
+            Błąd: <span th:text="${#fields.errors('cardExpiration')}"></span>
+        </span>
+        <br/>
+
+        <label for="cardCVV"> CVV: </label>
+        <input type="text" th:field="*{cardCVV}" />
+        <span class="validationError" th:if="${#fields.hasErrors('cardCVV')}" th:errors="*{cardCVV}">
+            Błąd: <span th:text="${#fields.errors('cardCVV')}"></span>
+        </span>
+        <br/>
+
+        <input type="submit" value="Złóż zamówienie" />
+    </form>
+</body>
+</html>

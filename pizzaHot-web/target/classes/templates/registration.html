@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplikacja Pizza Hot</title>
+</head>
+<body>
+<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+<h1>Rejestracja</h1>
+<img th:src="@{/logo.png}"/>
+
+<br/>
+<p>Masz już konto? Kliknij
+    <a th:href="@{/login}">tutaj</a>, aby się zalogować.</p>
+
+<form method="POST" th:action="@{/register}" id="registerForm">
+    <label for="username">Nazwa użytkownika: </label>
+    <input type="text" name="username"/><br/>
+    <label for="password">Hasło: </label>
+    <input type="password" name="password"/><br/>
+    <label for="confirm">Potwierdź hasło: </label>
+    <input type="password" name="confirm"/><br/>
+    <label for="fullname">Pełne imię i nazwisko: </label>
+    <input type="text" name="fullName"/><br/>
+    <label for="street">Ulica: </label>
+    <input type="text" name="street"/><br/>
+    <label for="city">Miejscowość: </label>
+    <input type="text" name="city"/><br/>
+    <label for="zip">Kod pocztowy: </label>
+    <input type="text" name="zip"/><br/>
+    <label for="phone">Telefon: </label>
+    <input type="text" name="phoneNumber"/><br/>
+    <input type="submit" value="Zarejestruj"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-PizzahotApplication<pizzahot>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "pl.edu.wszib.pizzahot.PizzahotApplication",
+            "projectName": "pizzahot",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
