@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pizzas.data.UserRepository;
 import pizzas.security.RegistrationForm;
 
+
 @Controller
 @RequestMapping("/register")
 public class RegistrationController {

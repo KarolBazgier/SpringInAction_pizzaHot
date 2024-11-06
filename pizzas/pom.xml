@@ -50,6 +50,11 @@
             <artifactId>pizzaHot-web</artifactId>
             <version>${pizzahot.version}</version>
         </dependency>
+        <dependency>
+        <groupId>pl.edu.wszib</groupId>
+        <artifactId>pizzaHot-web</artifactId>
+        <version>${pizzahot.version}</version>
+    </dependency>
 
 
         <!-- Run against embedded H2 database by default -->
@@ -100,7 +105,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>pl.edu.wszib.pizzahot.PizzahotApplication</mainClass> <!-- Zmień na pełną nazwę klasy startowej -->
+                    <mainClass>pizzas.PizzaHotApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

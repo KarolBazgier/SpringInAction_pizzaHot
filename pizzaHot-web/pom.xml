@@ -8,7 +8,9 @@
     <artifactId>pizzaHot-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
+
     <name>pizzaHot-web</name>
+
 
     <parent>
         <groupId>pizza</groupId>
@@ -53,6 +55,8 @@
         </dependency>
 
 
+
+
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -65,6 +69,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>pl.edu.wszib</groupId>
+            <artifactId>pizzaHot-security</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>
