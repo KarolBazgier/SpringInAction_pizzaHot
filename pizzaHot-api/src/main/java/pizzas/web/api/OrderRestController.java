@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pizzas.Order;
 import pizzas.data.OrderRepository;
+import pizzas.messaging.JmsOrdeMessagingService;
+import pizzas.messaging.OrderMessagingService;
 
 
 import java.util.Optional;
@@ -17,9 +19,11 @@ import java.util.Optional;
 public class OrderRestController {
 
     private OrderRepository orderRepo;
+    private JmsOrdeMessagingService orderMessagingService;
 
-    public OrderRestController(OrderRepository orderRepo) {
+    public OrderRestController(OrderRepository orderRepo, JmsOrdeMessagingService orderMessagingService) {
         this.orderRepo = orderRepo;
+        this.orderMessagingService = orderMessagingService;
     }
 
     @GetMapping(produces="application/json")
@@ -30,6 +34,7 @@ public class OrderRestController {
     @PostMapping(consumes="application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public Order postOrder(@RequestBody Order order) {
+        orderMessagingService.sendOrder(order);
         return orderRepo.save(order);
     }
     @PutMapping(path="/{orderId}", consumes="application/json")

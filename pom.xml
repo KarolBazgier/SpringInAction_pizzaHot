@@ -10,7 +10,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>pl.edu.wszib</groupId>
+	<groupId>pizza</groupId>
 	<artifactId>pizzahot-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
@@ -162,18 +162,9 @@
 	<module>pizzaHot-domain</module>
 	<module>pizzaHot-security</module>
 	<module>pizzaHot-web</module>
-
+	<module>pizzaHot-messaging-jms</module>
+	<module>pizzaHot-kitchen</module>
 	</modules>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<mainClass>pl.edu.wszib.pizzahot.PizzahotApplication</mainClass> <!-- Zmień na pełną nazwę klasy startowej -->
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+
 </project>

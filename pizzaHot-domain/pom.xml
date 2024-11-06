@@ -7,9 +7,11 @@
 
     <artifactId>pizzaHot-domain</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>pizzahot-domain</name>
 
     <parent>
-        <groupId>pl.edu.wszib</groupId>
+        <groupId>pizza</groupId>
         <artifactId>pizzahot-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>

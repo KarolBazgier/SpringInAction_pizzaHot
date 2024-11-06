@@ -1,4 +1,3 @@
-UserRepositoryUserDetailsService.class
-RegistrationForm.class
-WebConfig.class
-SecurityConfig.class
+pizzas\security\SecurityConfig.class
+pizzas\security\RegistrationForm.class
+pizzas\security\UserRepositoryUserDetailsService.class

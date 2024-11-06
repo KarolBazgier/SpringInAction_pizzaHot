@@ -1,7 +1,4 @@
-RestTemplateController.class
-DesignPizzaRestController.class
-HomeController.class
-DesignPizzaController.class
-OrderController.class
-OrderRestController.class
-RegistrationController.class
+pizzas\web\api\DesignPizzaController.class
+pizzas\web\api\DesignPizzaRestController.class
+pizzas\web\api\RestTemplateController.class
+pizzas\web\api\OrderRestController.class

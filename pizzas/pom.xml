@@ -7,9 +7,12 @@
 
     <artifactId>pizzas</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>pizzas</name>
 
     <parent>
-        <groupId>pl.edu.wszib</groupId>
+        <groupId>pizza</groupId>
         <artifactId>pizzahot-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
@@ -23,30 +26,31 @@
     <dependencies>
 
         <dependency>
-            <groupId>pl.edu.wszib</groupId>
+            <groupId>pizza</groupId>
             <artifactId>pizzaHot-data</artifactId>
             <version>${pizzahot.version}</version>
         </dependency>
         <dependency>
-            <groupId>pl.edu.wszib</groupId>
+            <groupId>pizza</groupId>
             <artifactId>pizzaHot-domain</artifactId>
             <version>${pizzahot.version}</version>
         </dependency>
         <dependency>
-            <groupId>pl.edu.wszib</groupId>
+            <groupId>pizza</groupId>
             <artifactId>pizzaHot-security</artifactId>
             <version>${pizzahot.version}</version>
         </dependency>
         <dependency>
-            <groupId>pl.edu.wszib</groupId>
+            <groupId>pizza</groupId>
             <artifactId>pizzaHot-api</artifactId>
             <version>${pizzahot.version}</version>
         </dependency>
         <dependency>
-            <groupId>pl.edu.wszib</groupId>
-            <artifactId>pizzaHot-ui</artifactId>
+            <groupId>pizza</groupId>
+            <artifactId>pizzaHot-web</artifactId>
             <version>${pizzahot.version}</version>
         </dependency>
+
 
         <!-- Run against embedded H2 database by default -->
         <dependency>

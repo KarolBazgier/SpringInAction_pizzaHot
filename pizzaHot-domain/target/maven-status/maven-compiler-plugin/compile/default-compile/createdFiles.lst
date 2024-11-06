@@ -1,5 +1,5 @@
-Ingredient$Type.class
-Ingredient.class
-Order.class
-Pizza.class
-User.class
+pizzas\Ingredient$Type.class
+pizzas\Ingredient.class
+pizzas\User.class
+pizzas\Order.class
+pizzas\Pizza.class
