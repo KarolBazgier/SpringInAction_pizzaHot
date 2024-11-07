@@ -10,10 +10,10 @@ import java.util.List;
 public class Order {
 
     private Date placedAt;
-    private String deliveryName;
-    private String deliveryStreet;
-    private String deliveryCity;
-    private String deliveryZip;
+    private String name;
+    private String street;
+    private String city;
+    private String zip;
 
     private List<Pizza> pizzas = new ArrayList<>();
 

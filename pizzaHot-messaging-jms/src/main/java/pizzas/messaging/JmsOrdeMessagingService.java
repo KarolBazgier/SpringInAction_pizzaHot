@@ -17,11 +17,11 @@ public class JmsOrdeMessagingService implements OrderMessagingService {
         this.jms = jms;
     }
 
-    @Override
     public void sendOrder(Order order) {
-       jms.convertAndSend("pizzaHot.order.queue", order,
-               this::addOrderSource);
-
+        jms.convertAndSend("pizzaHot.order.queue", order, message -> {
+            message.setStringProperty("_typeId", "order");
+            return message;
+        });
     }
 
     private Message addOrderSource(Message message) throws JMSException {

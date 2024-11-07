@@ -7,11 +7,6 @@ import java.util.List;
 
 @Data
 public class Pizza {
-
-    private String name;
-
-    private Date createdAt;
-
-    private List<Ingredient> ingredients;
+        private long id;
 
 }

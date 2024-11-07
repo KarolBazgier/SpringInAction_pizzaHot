@@ -12,9 +12,9 @@ import pizzas.kitchen.messaging.JmsOrderReceiver;
 @RequestMapping("/orders")
 public class OrderReceiverController {
 
-    private  JmsOrderReceiver orderReceiver;
+    private  OrderReceiver orderReceiver;
 
-    public OrderReceiverController(JmsOrderReceiver orderReceiver) {
+    public OrderReceiverController(OrderReceiver orderReceiver) {
         this.orderReceiver = orderReceiver;
     }
 

@@ -34,6 +34,7 @@ public class OrderRestController {
     @PostMapping(consumes="application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public Order postOrder(@RequestBody Order order) {
+        log.warn(order.toString());
         orderMessagingService.sendOrder(order);
         return orderRepo.save(order);
     }

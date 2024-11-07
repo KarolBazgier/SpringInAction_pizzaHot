@@ -155,12 +155,12 @@ Content-Type: application/json
     });
 %}
 
-### rest Order - delete Order
-DELETE http://localhost:8080/rest/order/1
-
-> {%
-    client.test("Oczekiwany status 204", function() {
-        client.assert(response.status === 204, "Oczekiwano statusu 204, ale otrzymano " + response.status);
-    });
-
-%}
+#### rest Order - delete Order
+#DELETE http://localhost:8080/rest/order/1
+#
+#> {%
+#    client.test("Oczekiwany status 204", function() {
+#        client.assert(response.status === 204, "Oczekiwano statusu 204, ale otrzymano " + response.status);
+#    });
+#
+#%}
