@@ -1,0 +1,25 @@
+
+spring:
+  main:
+    web-application-type: none
+  mail:
+    host: imap.gmail.com
+    username: bazgierkarol7@gmail.com
+    password: laq6pGQm
+
+pizzahot:
+  api:
+    url: http://localhost:8080/rest/order/fromEmail
+  email:
+    host: imap.gmail.com
+    mailbox: INBOX
+    username: bazgierkarol7@gmail.com
+    password: password
+    poll-rate: 10000
+    properties:
+      mail:
+        imap:
+          ssl:
+            enable: true  # Używaj IMAP z SSL (wymagane przez Gmail)
+        store:
+          protocol: imaps  # Ustaw protokół na IMAPS (IMAP over SSL)

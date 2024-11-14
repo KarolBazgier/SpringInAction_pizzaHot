@@ -162,8 +162,9 @@
 	<module>pizzaHot-domain</module>
 	<module>pizzaHot-security</module>
 	<module>pizzaHot-web</module>
-	<module>pizzaHot-messaging-jms</module>
+<!--	<module>pizzaHot-messaging-jms</module>-->
 	<module>pizzaHot-kitchen</module>
+	<module>pizzaHot-email</module>
 	</modules>
 
 

@@ -4,6 +4,8 @@
     <file url="file://$PROJECT_DIR$/pizzaHot-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pizzaHot-data/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pizzaHot-domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pizzaHot-email/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pizzaHot-email/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pizzaHot-kitchen/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pizzaHot-messaging-jms/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pizzaHot-security/src/main/java" charset="UTF-8" />
@@ -12,5 +14,7 @@
     <file url="file://$PROJECT_DIR$/pizzas/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../simple-flow/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../simple-flow/src/main/resources" charset="UTF-8" />
   </component>
 </project>

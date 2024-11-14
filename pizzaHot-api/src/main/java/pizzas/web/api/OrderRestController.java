@@ -6,8 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pizzas.Order;
 import pizzas.data.OrderRepository;
-import pizzas.messaging.JmsOrdeMessagingService;
-import pizzas.messaging.OrderMessagingService;
+//import pizzas.messaging.JmsOrdeMessagingService;
+//import pizzas.messaging.OrderMessagingService;
 
 
 import java.util.Optional;
@@ -19,11 +19,13 @@ import java.util.Optional;
 public class OrderRestController {
 
     private OrderRepository orderRepo;
-    private JmsOrdeMessagingService orderMessagingService;
+//    private JmsOrdeMessagingService orderMessagingService;
+    private EmailOrderService emailOrderService;
 
-    public OrderRestController(OrderRepository orderRepo, JmsOrdeMessagingService orderMessagingService) {
+    public OrderRestController(OrderRepository orderRepo, EmailOrderService emailOrderService) {
         this.orderRepo = orderRepo;
-        this.orderMessagingService = orderMessagingService;
+//        this.orderMessagingService = orderMessagingService;
+        this.emailOrderService = emailOrderService;
     }
 
     @GetMapping(produces="application/json")
@@ -35,7 +37,7 @@ public class OrderRestController {
     @ResponseStatus(HttpStatus.CREATED)
     public Order postOrder(@RequestBody Order order) {
         log.warn(order.toString());
-        orderMessagingService.sendOrder(order);
+//        orderMessagingService.sendOrder(order);
         return orderRepo.save(order);
     }
     @PutMapping(path="/{orderId}", consumes="application/json")
@@ -96,5 +98,13 @@ public class OrderRestController {
         try {
             orderRepo.deleteById(orderId);
         } catch (EmptyResultDataAccessException e) {}
+    }
+
+    @PostMapping(path = "/fromEmail", consumes = "application/json")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Order postOrderEmail(@RequestBody EmailOrder emailOrder){
+        Order order = emailOrderService.convertEmailToOrder(emailOrder);
+        //        orderMessagingService.sendOrder(order);
+        return orderRepo.save(order);
     }
 }

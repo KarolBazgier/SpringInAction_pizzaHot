@@ -1,7 +1,7 @@
-package pizzas.messaging;
-
-import pizzas.Order;
-
-public interface OrderMessagingService {
-    void sendOrder(Order order);
-}
+//package pizzas.messaging;
+//
+//import pizzas.Order;
+//
+//public interface OrderMessagingService {
+//    void sendOrder(Order order);
+//}
